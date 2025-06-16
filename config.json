@@ -1,0 +1,9 @@
+{
+    "TELEGRAM_BOT_TOKEN": "",
+    "DEBUG": "0",
+    "UTC_FORMAT": "3",
+    "PORT_MOON": "7125",
+
+    "HOST_MOON_1": "192.168.1.1",
+    "HOST_MOON_2": "192.168.1.2"
+}
