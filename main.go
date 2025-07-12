@@ -89,7 +89,11 @@ func main() {
 
 					go func() {
 						defer wg.Done()
+						log.Printf("Запрашиваю информацию по IP: %s", hostIP)
 						info, infoErr = service.GetPrintersInfo(hostIP)
+						if infoErr != nil {
+							log.Printf("Ошибка GetPrintersInfo(%s): %v", hostIP, infoErr)
+						}
 					}()
 
 					go func() {

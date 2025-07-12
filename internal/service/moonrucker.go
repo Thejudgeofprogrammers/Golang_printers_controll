@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"printers/internal/config"
@@ -43,7 +44,8 @@ func GetPrintersInfo(ip string) (interfaces.PrinterInfo, error) {
 		return interfaces.PrinterInfo{}, fmt.Errorf("файл не найден")
 	}
 
-	metdataURL := fmt.Sprintf("http://%s:%s/server/files/metadata?filename=%s", ip, cfg["PORT_MOON"], filename)
+	escapedFilename := url.QueryEscape(filename)
+	metdataURL := fmt.Sprintf("http://%s:%s/server/files/metadata?filename=%s", ip, cfg["PORT_MOON"], escapedFilename)
 	metaResp, err := http.Get(metdataURL)
 
 	if err != nil {
